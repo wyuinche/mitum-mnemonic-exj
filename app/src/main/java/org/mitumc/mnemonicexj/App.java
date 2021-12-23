@@ -13,7 +13,7 @@ import org.web3j.crypto.MnemonicUtils;
 public class App {
 
     public static HashMap<String, Object> generateMitumKeypairWithoutSeed() {
-        /* without any seed */
+        
         try {
             /* generate random entropy */
             SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
