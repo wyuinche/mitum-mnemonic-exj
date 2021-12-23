@@ -23,7 +23,7 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:30.1-jre'
     implementation 'org.web3j:crypto:5.0.0'
-    implementation files('./src/lib/mitum-java-util.jar')
+    implementation files('./src/lib/mitum-java-util-1.2.2.jar')
 }
 
 application {

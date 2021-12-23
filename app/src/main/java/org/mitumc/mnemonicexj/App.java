@@ -13,11 +13,12 @@ import org.web3j.crypto.MnemonicUtils;
 public class App {
 
     public static HashMap<String, Object> generateMitumKeypairWithoutSeed() {
-        
+
         try {
             /* generate random entropy */
-            SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
-            byte[] entropy = random.generateSeed(32);
+            SecureRandom random = SecureRandom.getInstance("DRBG");
+            byte[] entropy = new byte[32];
+            random.nextBytes(entropy);
 
             /* calculate checksum */
             byte checksum = MnemonicUtils.calculateChecksum(entropy);
