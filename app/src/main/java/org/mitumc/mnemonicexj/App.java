@@ -3,7 +3,6 @@
  */
 package org.mitumc.mnemonicexj;
 
-import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.HashMap;
 
@@ -16,12 +15,9 @@ public class App {
 
         try {
             /* generate random entropy */
-            SecureRandom random = SecureRandom.getInstance("DRBG");
+            SecureRandom random = new SecureRandom();
             byte[] entropy = new byte[32];
             random.nextBytes(entropy);
-
-            /* calculate checksum */
-            byte checksum = MnemonicUtils.calculateChecksum(entropy);
 
             /* generate mnemonic from entropy */
             String mnemonic = MnemonicUtils.generateMnemonic(entropy);
@@ -41,8 +37,8 @@ public class App {
             map.put("keypair", kp);
 
             return map;
-        } catch (NoSuchAlgorithmException exception) {
-            System.out.println("no such algorithm");
+        } catch (Exception exception) {
+            System.out.println("Cannot generate keypair");
             System.exit(-1);
         }
 
@@ -52,9 +48,6 @@ public class App {
     public static HashMap<String, Object> generateMitumKeypairFromEtherKey(String key) {
             /* ether key to entropy */
             byte[] entropy = new java.math.BigInteger(key, 16).toByteArray();
-    
-            /* calculate checksum */
-            byte checksum = MnemonicUtils.calculateChecksum(entropy);
     
             /* generate mnemonic from entropy */
             String mnemonic = MnemonicUtils.generateMnemonic(entropy);
