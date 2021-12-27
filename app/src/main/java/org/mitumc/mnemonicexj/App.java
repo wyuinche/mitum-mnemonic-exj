@@ -12,33 +12,25 @@ import org.web3j.crypto.MnemonicUtils;
 public class App {
 
     public static HashMap<String, Object> generateMitumKeypairWithoutSeed() {
+        /* generate random entropy */
+        SecureRandom random = new SecureRandom();
+        byte[] entropy = new byte[32];
+        random.nextBytes(entropy);
 
-        try {
-            /* generate random entropy */
-            SecureRandom random = new SecureRandom();
-            byte[] entropy = new byte[32];
-            random.nextBytes(entropy);
+        /* generate mnemonic from entropy */
+        String mnemonic = MnemonicUtils.generateMnemonic(entropy);
 
-            /* generate mnemonic from entropy */
-            String mnemonic = MnemonicUtils.generateMnemonic(entropy);
+        /* generate seed from mnemonic */
+        byte[] seed = MnemonicUtils.generateSeed(mnemonic, "your salt phrase");
 
-            /* generate seed from mnemonic */
-            byte[] seed = MnemonicUtils.generateSeed(mnemonic, "your salt phrase");
+        /* generate mitum keypair with seed */
+        Keypair kp = Keypair.fromSeed(seed);
 
-            /* generate mitum keypair with seed */
-            Keypair kp = Keypair.fromSeed(seed);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("mnemonic", mnemonic);
+        map.put("keypair", kp);
 
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("mnemonic", mnemonic);
-            map.put("keypair", kp);
-
-            return map;
-        } catch (Exception exception) {
-            System.out.println("Cannot generate keypair");
-            System.exit(-1);
-        }
-
-        return null;
+        return map;
     }
 
     public static HashMap<String, Object> generateMitumKeypairFromEtherKey(String key) {
