@@ -21,8 +21,8 @@ And the packages below must be installed.
 
 [example file](app/src/main/java/org/mitumc/mnemonicexj/App.java)
 
-* Generate keypair without seed
-See `generateMitumKeypairWithoutSeed()`
+* Generate keypair without seed.
+-> See `generateMitumKeypairWithoutSeed()`
 
-* Generate keypair with ether keypair
-See `generateMitumKeypairFromEtherKey(String key)`
+* Generate keypair with ether keypair.
+-> See `generateMitumKeypairFromEtherKey(String key)`
