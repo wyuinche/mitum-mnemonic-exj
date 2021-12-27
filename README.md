@@ -2,7 +2,7 @@
 
 This is the example to generate mnemonic and mitum Keypair with or without seed.
 
-This example use ether private key as seed and you should know that seed length must be 32.
+This example use ether private key as seed and you should know that seed length for mitum keypair must be 32byte(256bit).
 
 ## Prerequisite
 
