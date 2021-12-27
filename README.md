@@ -14,7 +14,7 @@ This project developed with,
 
 And the packages below must be installed.
 
-* mitum-java-util v1.2.2
+* mitum-java-util v1.2.3
 * org.web3j.crypto v5.0.0
 
 ## Examples
