@@ -23,11 +23,7 @@ public class App {
             String mnemonic = MnemonicUtils.generateMnemonic(entropy);
 
             /* generate seed from mnemonic */
-            byte[] _seed = MnemonicUtils.generateSeed(mnemonic, "your salt phrase");
-
-            /* seed used by mitum */
-            byte[] seed = new byte[32];
-            System.arraycopy(_seed, 0, seed, 0, 32);
+            byte[] seed = MnemonicUtils.generateSeed(mnemonic, "your salt phrase");
 
             /* generate mitum keypair with seed */
             Keypair kp = Keypair.fromSeed(seed);
@@ -53,11 +49,7 @@ public class App {
             String mnemonic = MnemonicUtils.generateMnemonic(entropy);
     
             /* generate seed from mnemonic */
-            byte[] _seed = MnemonicUtils.generateSeed(mnemonic, "your salt phrase");
-    
-            /* seed used by mitum */
-            byte[] seed = new byte[32];
-            System.arraycopy(_seed, 0, seed, 0, 32);
+            byte[] seed = MnemonicUtils.generateSeed(mnemonic, "your salt phrase");
     
             /* generate mitum keypair with seed */
             Keypair kp = Keypair.fromSeed(seed);
